@@ -1,4 +1,35 @@
+﻿# ============================================================
+# Rust / Cargo
+# ============================================================
+
 /target/
-hearthcoach_demo.json
+target/
+debug/
+*.pdb
+
+# rustfmt backup files
+**/*.rs.bk
+
+# cargo-mutants
+**/mutants.out*/
+
+# ============================================================
+# HearthCoach runtime / private data
+# ============================================================
+
+/hearthcoach_demo.json
+/hearthcoach_sessions/
 /records*/
+/logs/
+/hearthdb_cards_v4_zhCN.json
+
 *.log
+
+# ============================================================
+# IDE / OS
+# ============================================================
+
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
