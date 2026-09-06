@@ -1580,7 +1580,7 @@ hearthcoach_demo.json
 MIT
 ```
 
-如果公开发布本仓库，建议同时在仓库根目录加入正式 `LICENSE` 文件。
+本项目采用 MIT License，详见仓库根目录的 LICENSE 文件。
 
 ---
 
