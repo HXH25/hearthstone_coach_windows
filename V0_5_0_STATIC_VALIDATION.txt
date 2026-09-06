@@ -1,0 +1,18 @@
+HearthCoach V0.5.0.6 static validation (assistant build environment)
+
+Performed:
+- parsed hearthcoach_demo.example.json successfully
+- delimiter/string/comment scan across 41 Rust source/test files
+- checked robust card-art source contains CardPortraits/CardTiles preference, iCCP stripping, multi-candidate fallback
+- checked auto_prepare_guide config and server flow are present
+- checked V0.5.0.5 Unicode-safe Hearthstone discovery remains present
+- checked package structure before archive creation
+
+Not performed in this environment:
+- cargo fmt
+- cargo check
+- cargo test
+- Windows Win32 runtime test
+
+Final Windows gate:
+  powershell -ExecutionPolicy Bypass -File .\VERIFY_V0_5_0_6.ps1

@@ -1,0 +1,64 @@
+{
+  "hearthstone_dir": "",
+  "port": 8765,
+  "open_browser_on_start": false,
+  "deepseek": {
+    "api_compatibility": "deepseek",
+    "base_url": "https://api.deepseek.com",
+    "api_key": "",
+    "model": "deepseek-v4-flash",
+    "thinking": false,
+    "max_tokens": 4096,
+    "context_window": 64000,
+    "timeout_seconds": 120,
+    "pricing": {
+      "currency": "CNY",
+      "input_per_million": 0.0,
+      "output_per_million": 0.0,
+      "cached_input_per_million": 0.0
+    },
+    "budget": {
+      "max_total_tokens": null,
+      "max_cost": null
+    }
+  },
+  "overlay": {
+    "enabled": true,
+    "shop_center_x_ratio": 0.505,
+    "shop_top_ratio": 0.285,
+    "shop_slot_spacing_ratio": 0.079,
+    "card_width_ratio": 0.095,
+    "card_height_ratio": 0.215,
+    "border_px": 4,
+    "highlight_delay_ms": 320,
+    "panel_width_ratio": 0.235,
+    "panel_height_ratio": 0.3,
+    "panel_x_ratio": null,
+    "panel_y_ratio": null,
+    "panel_right_margin_ratio": 0.012,
+    "panel_bottom_margin_ratio": 0.055,
+    "panel_alpha": 248,
+    "guide_width_ratio": 0.76,
+    "guide_height_ratio": 0.14,
+    "guide_top_margin_ratio": 0.012,
+    "guide_alpha": 246,
+    "guide_card_limit": 7,
+    "card_art_dirs": []
+  },
+  "agent": {
+    "enabled": true,
+    "auto_plan_during_combat": true,
+    "trinket_rounds": [
+      6,
+      9
+    ],
+    "critical_health": 15,
+    "emergency_health": 8,
+    "auto_prepare_guide": true
+  },
+  "compliance": {
+    "history_dir": "hearthcoach_sessions",
+    "auto_save_sessions": true,
+    "task_history_limit": 200
+  }
+}
