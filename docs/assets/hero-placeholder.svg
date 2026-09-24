@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="title desc">
+<title id="title">HearthCoach preview placeholder</title>
+<desc id="desc">Stylized mockup showing a game window, overlay recommendations, and a control center panel.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#182337"/><stop offset="1" stop-color="#0d1422"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#243e67"/><stop offset="1" stop-color="#172941"/></linearGradient>
+</defs>
+<rect width="1000" height="700" rx="30" fill="#eef2f7"/>
+<rect x="35" y="35" width="930" height="630" rx="24" fill="url(#bg)"/>
+<rect x="60" y="65" width="610" height="455" rx="20" fill="#283347"/>
+<circle cx="115" cy="120" r="28" fill="#51657f"/><rect x="160" y="95" width="190" height="16" rx="8" fill="#8493a8"/><rect x="160" y="122" width="120" height="11" rx="6" fill="#596b84"/>
+<rect x="95" y="205" width="88" height="120" rx="16" fill="#70533c"/><rect x="195" y="205" width="88" height="120" rx="16" fill="#55706f"/><rect x="295" y="205" width="88" height="120" rx="16" fill="#6c5e78"/><rect x="395" y="205" width="88" height="120" rx="16" fill="#5e6f4a"/><rect x="495" y="205" width="88" height="120" rx="16" fill="#6c4755"/>
+<rect x="88" y="190" width="102" height="150" rx="20" fill="none" stroke="#ffbd2e" stroke-width="6"/>
+<rect x="288" y="190" width="102" height="150" rx="20" fill="none" stroke="#50cfff" stroke-width="6"/>
+<rect x="95" y="390" width="520" height="90" rx="14" fill="#111b2a" stroke="#4a6380"/><text x="120" y="423" fill="#7fa9ff" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700">TACTICAL PLAN</text><text x="120" y="452" fill="#fff" font-family="Segoe UI, sans-serif" font-size="24" font-weight="700">Buy → Play → Refresh</text>
+<rect x="700" y="65" width="235" height="555" rx="20" fill="url(#glass)"/>
+<text x="730" y="110" fill="#fff" font-family="Segoe UI, sans-serif" font-size="24" font-weight="700">HearthCoach</text><text x="730" y="138" fill="#9eb3cc" font-family="Segoe UI, sans-serif" font-size="13">Control Center</text>
+<rect x="725" y="175" width="185" height="86" rx="13" fill="#152238"/><text x="745" y="202" fill="#87a8cf" font-family="Segoe UI, sans-serif" font-size="12">ROUND PLAN</text><text x="745" y="231" fill="#fff" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700">Stabilize board</text>
+<rect x="725" y="280" width="185" height="128" rx="13" fill="#152238"/><text x="745" y="307" fill="#87a8cf" font-family="Segoe UI, sans-serif" font-size="12">WATCHLIST</text><rect x="745" y="327" width="116" height="11" rx="6" fill="#d76060"/><rect x="745" y="349" width="142" height="11" rx="6" fill="#d9a64f"/><rect x="745" y="371" width="93" height="11" rx="6" fill="#5bb7d5"/>
+<rect x="725" y="427" width="185" height="150" rx="13" fill="#152238"/><text x="745" y="455" fill="#87a8cf" font-family="Segoe UI, sans-serif" font-size="12">AI COACH</text><rect x="745" y="477" width="145" height="34" rx="10" fill="#294267"/><rect x="770" y="525" width="120" height="33" rx="10" fill="#1b314c"/>
+<text x="72" y="625" fill="#a9b4c3" font-family="Segoe UI, sans-serif" font-size="14">Replace this mockup with docs/assets/hero.webp for the final Gallery version.</text>
+</svg>

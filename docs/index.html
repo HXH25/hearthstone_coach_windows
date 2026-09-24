@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f7f8fb" />
+  <meta name="description" content="HearthCoach — a Rust-based real-time AI decision assistant for Hearthstone Battlegrounds, combining local game-state reconstruction, LLM strategic planning, fast tactical scoring, and a native Windows overlay." />
+  <meta property="og:title" content="HearthCoach — Real-Time AI Decision Support for Battlegrounds" />
+  <meta property="og:description" content="Local log parsing + LLM strategy + Rust fast agent + native Windows overlay." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hxh25.github.io/hearthstone_coach_windows/" />
+  <meta property="og:image" content="https://hxh25.github.io/hearthstone_coach_windows/assets/hero.webp" />
+  <title>HearthCoach — Real-Time AI Decision Support for Battlegrounds</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♟️</text></svg>">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="nav-wrap">
+      <a class="brand" href="#top" aria-label="HearthCoach home">
+        <span class="brand-mark">HC</span>
+        <span>HearthCoach</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#overview">Overview</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#demo">Demo</a>
+        <a href="#features">Features</a>
+      </nav>
+      <a class="nav-github" href="https://github.com/HXH25/hearthstone_coach_windows" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section">
+      <div class="hero-copy reveal">
+        <div class="eyebrow-row">
+          <span class="pill">Rust</span>
+          <span class="pill">Windows</span>
+          <span class="pill">Real-time</span>
+          <span class="pill">LLM + Agent</span>
+        </div>
+        <h1>HearthCoach</h1>
+        <p class="hero-tagline">Real-Time AI Decision Support for Hearthstone Battlegrounds</p>
+        <p class="hero-cn">一个从本地游戏日志实时重建局面，并融合 LLM 长程规划与 Rust 高频战术决策的酒馆战棋辅助系统。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://github.com/HXH25/hearthstone_coach_windows" target="_blank" rel="noreferrer">View on GitHub</a>
+          <a class="button secondary" href="#architecture">See how it works</a>
+          <a class="button ghost" href="https://github.com/HXH25/hearthstone_coach_windows#readme" target="_blank" rel="noreferrer">README</a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" aria-label="HearthCoach interface preview">
+        <img src="./assets/hero.webp" alt="HearthCoach running as an in-game decision overlay during a Battlegrounds match" />
+      </div>
+    </section>
+
+    <section class="section compact" id="overview">
+      <div class="section-heading reveal">
+        <span class="kicker">Overview</span>
+        <h2>让 AI 真正参与一局实时战棋，而不只是赛后分析</h2>
+        <p>
+          HearthCoach 持续读取 Hearthstone 的本地日志，恢复回合、金币、酒馆等级、手牌、棋盘、商店、对手与 Choice 等状态；
+          再将低频的战略规划与高频的局面评分拆开，使复杂推理与实时响应能够同时存在。
+        </p>
+      </div>
+
+      <div class="metrics reveal">
+        <div class="metric">
+          <span class="metric-value">2-speed</span>
+          <span class="metric-label">LLM slow planner + Rust fast agent</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">Local-first</span>
+          <span class="metric-label">Power.log / HDT facts / local runtime</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">v0.5.0.7</span>
+          <span class="metric-label">Current Windows release in this repository</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value">No injection</span>
+          <span class="metric-label">No auto-clicking or game-process control</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="architecture">
+      <div class="section-heading centered reveal">
+        <span class="kicker">System Architecture</span>
+        <h2>From raw game logs to grounded real-time decisions</h2>
+        <p>事实、战略与执行建议分层：HDT/HearthDb 提供卡牌事实，LLM 负责长程战略，Rust 负责校验与实时评分。</p>
+      </div>
+
+      <div class="figure-card reveal">
+        <picture>
+          <source srcset="./assets/architecture.webp" type="image/webp" />
+          <img src="./assets/architecture.svg" alt="HearthCoach system architecture: log parsing, snapshots, LLM planning and a real-time decision engine" loading="lazy" />
+        </picture>
+      </div>
+
+      <div class="three-principles reveal">
+        <article>
+          <div class="principle-index">01</div>
+          <h3>Grounded facts</h3>
+          <p>通过 Power.log、HearthDb、HearthMirror 与 CardDefs 获取实时状态和当前卡池信息，不让语言模型自行“猜卡牌事实”。</p>
+        </article>
+        <article>
+          <div class="principle-index">02</div>
+          <h3>Slow strategy</h3>
+          <p>LLM 低频生成可玩阵容、阶段 Watchlist、RoundPlan、饰品规划，并负责可解释的 AI 教练对话。</p>
+        </article>
+        <article>
+          <div class="principle-index">03</div>
+          <h3>Fast tactics</h3>
+          <p>商店变化时由 Rust 直接结合 Snapshot + RoundPlan + Watchlist 评分 Buy、Play、Upgrade、Refresh、Freeze 等动作。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split-section">
+      <div class="split-copy reveal">
+        <span class="kicker">Two-Speed Agent</span>
+        <h2>把“想得深”和“反应快”拆成两个时间尺度</h2>
+        <p>
+          如果每次刷新商店都调用一次大模型，延迟和成本会让实时辅助失去意义。HearthCoach 因此只让 LLM 在关键节点做慢规划，
+          把当前回合的目标和关注卡表交给 Rust 快速代理持续执行。
+        </p>
+        <div class="mini-flow">
+          <span>Snapshot</span><b>+</b><span>RoundPlan</span><b>+</b><span>Watchlist</span><b>→</b><span class="accent-box">TacticalPlan</span>
+        </div>
+      </div>
+      <div class="decision-panels reveal">
+        <article class="decision-card slow">
+          <div class="decision-label">SLOW · LLM</div>
+          <h3>Strategic Planner</h3>
+          <ul>
+            <li>可玩阵容与转型方向</li>
+            <li>前 / 中 / 后期 Watchlist</li>
+            <li>RoundPlan 与饰品需求</li>
+            <li>用户对话与目标修正</li>
+          </ul>
+        </article>
+        <article class="decision-card fast">
+          <div class="decision-label">FAST · RUST</div>
+          <h3>Tactical Agent</h3>
+          <ul>
+            <li>Buy / Play / Sell → Buy</li>
+            <li>Upgrade / Refresh / Freeze</li>
+            <li>实时候选动作评分</li>
+            <li>低延迟 Overlay 推荐</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="demo">
+      <div class="section-heading centered reveal">
+        <span class="kicker">Live Experience</span>
+        <h2>一个系统，两种交互界面</h2>
+        <p>游戏内 Overlay 负责即时提示，Control Center 负责配置、诊断、历史、Agent 轨迹和 AI 对话。</p>
+      </div>
+
+      <div class="gallery reveal">
+        <figure class="shot wide strip-shot">
+          <img src="./assets/guide.webp" alt="HearthCoach composition guide showing ranked cards and roles" loading="lazy" />
+          <figcaption><b>Composition Guide</b><span>把慢规划转成可持续查看的阵容指南：核心牌、过渡组件、成长核心和阶段优先级。</span></figcaption>
+        </figure>
+
+        <figure class="shot">
+          <img src="./assets/tactical.webp" alt="HearthCoach tactical panel with a round goal and ranked actions" loading="lazy" />
+          <figcaption><b>Current Tactical Plan</b><span>每轮展示小目标、候选动作评分与简短路线，让即时决策不必等待下一次模型调用。</span></figcaption>
+        </figure>
+
+        <figure class="shot">
+          <img src="./assets/control-center.webp" alt="HearthCoach Control Center home screen" loading="lazy" />
+          <figcaption><b>Control Center</b><span>集中查看模型状态、Token / 成本、实时任务和环境诊断，并从这里进入各管理页面。</span></figcaption>
+        </figure>
+
+        <figure class="shot">
+          <img src="./assets/tasks.webp" alt="HearthCoach live task monitor showing completed and running planning jobs" loading="lazy" />
+          <figcaption><b>Live Task Monitor</b><span>模型规划作为可观察、可取消的异步任务运行，展示阶段、进度和耗时。</span></figcaption>
+        </figure>
+
+        <figure class="shot">
+          <img src="./assets/history.webp" alt="HearthCoach match history and AI trace interface" loading="lazy" />
+          <figcaption><b>Match History & Agent Trace</b><span>保留 GameArchive、RoundPlan、Chat、API calls、Tasks 与 Trace，便于回看和调试一次完整对局。</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="section-heading reveal">
+        <span class="kicker">What is implemented</span>
+        <h2>不是概念 Demo，而是一套完整的 Windows 工具链</h2>
+      </div>
+      <div class="feature-grid reveal">
+        <article class="feature-card">
+          <span class="feature-icon">◌</span>
+          <h3>Live state reconstruction</h3>
+          <p>增量解析 Power.log / Choice logs，维护实体状态并投影为可供 Agent 使用的 Snapshot。</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon">◇</span>
+          <h3>HDT grounded knowledge</h3>
+          <p>利用 HearthDb、HearthMirror 与 CardDefs 获取卡牌属性、当前卡池和本局可用种族。</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon">↯</span>
+          <h3>Rust tactical scoring</h3>
+          <p>在商店 revision 变化时快速生成动作候选，无需为每个小决策等待一次模型调用。</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon">◎</span>
+          <h3>Native Win32 overlay</h3>
+          <p>游戏外独立绘制 Overlay，可展示卡牌图片、推荐框、行动摘要与当前小目标。</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon">⌘</span>
+          <h3>Desktop control center</h3>
+          <p>模型配置、环境自检、Power.log 切换、对局记录、Agent 轨迹、API 调用与预算管理集中在一个界面。</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon">✓</span>
+          <h3>One-click bootstrap</h3>
+          <p>Windows Launcher 可检查 Rust、MSVC、HDT 与日志配置，并完成 release 构建与启动。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section tech-section">
+      <div class="tech-copy reveal">
+        <span class="kicker">Implementation</span>
+        <h2>Rust 2021 · Native Windows · Static Web UI</h2>
+        <p>核心代码按状态恢复、模型编排、战术 Agent、Overlay 与桌面控制中心拆分，并带有 parser/runtime/agent/card catalog 等测试。</p>
+        <div class="tech-tags" aria-label="Technology stack">
+          <span>Rust 2021</span><span>windows-sys</span><span>serde</span><span>tokio</span><span>reqwest</span><span>tiny_http</span><span>image</span>
+        </div>
+      </div>
+      <div class="code-card reveal" aria-label="Project structure">
+<pre><code>src/
+├── harness/      # log → entities → snapshot
+├── demo/
+│   ├── deepseek.rs
+│   ├── agent.rs
+│   ├── overlay.rs
+│   └── control_center.rs
+└── bin/
+
+tests/            # parser / runtime / agent / ...
+tools/            # bootstrap & HDT helpers</code></pre>
+      </div>
+    </section>
+
+    <section class="section boundary-section reveal">
+      <div>
+        <span class="kicker">Safety & Boundaries</span>
+        <h2>Decision support, not game automation</h2>
+      </div>
+      <p>
+        HearthCoach 只读取本地日志和卡牌数据，并在游戏进程之外创建辅助界面。它不会注入 Hearthstone 进程，
+        不会自动点击，也不会替玩家执行买牌、刷新或升级操作。发送给模型 API 的内容仅用于策略分析，API Key 保存在本地配置中。
+      </p>
+    </section>
+
+    <section class="section cta reveal">
+      <span class="kicker">Course Project · Open Source</span>
+      <h2>Explore the code, architecture, and full setup guide.</h2>
+      <div class="hero-actions centered-actions">
+        <a class="button primary" href="https://github.com/HXH25/hearthstone_coach_windows" target="_blank" rel="noreferrer">GitHub Repository</a>
+        <a class="button secondary" href="https://github.com/HXH25/hearthstone_coach_windows/blob/main/README.md" target="_blank" rel="noreferrer">Full Documentation</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <b>HearthCoach</b> · Open source under the MIT License
+    </div>
+    <div class="footer-note">Hearthstone and related names/assets belong to their respective rights holders. This project is independent and unaffiliated with Blizzard Entertainment, HearthSim, or Hearthstone Deck Tracker.</div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
