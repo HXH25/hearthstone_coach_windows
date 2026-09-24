@@ -1,6 +1,37 @@
 # HearthCoach for Windows
 
-HearthCoach 是一个以 **Rust 为核心**的炉石传说：酒馆战棋实时决策辅助工具。
+<p align="center">
+  <a href="https://hxh25.github.io/hearthstone_coach_windows/">
+    <img src="docs/assets/gallery-cover.webp" alt="HearthCoach" width="900">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://hxh25.github.io/hearthstone_coach_windows/"><strong>🌐 Project Page</strong></a>
+  ·
+  <a href="#功能概览"><strong>功能概览</strong></a>
+  ·
+  <a href="#最快启动方式"><strong>快速开始</strong></a>
+  ·
+  <a href="https://github.com/HXH25/hearthstone_coach_windows/issues"><strong>Issues</strong></a>
+</p>
+
+HearthCoach 是一个以 **Rust 为核心**的《炉石传说：酒馆战棋》实时决策辅助工具。
+
+当前仓库对应 **Windows v0.5.0.7**。程序通过本地读取 Hearthstone 日志、HDT/HearthDb/HearthMirror 卡牌与种族数据，结合：
+
+- **LLM 慢速战略规划**
+- **Rust 高频战术评分**
+- **Win32 游戏内 Overlay**
+- **原生桌面 Control Center**
+
+为当前对局提供阵容方向、关注卡表、回合目标、买牌 / 升本 / 刷新 / 冻结建议、饰品排序与 AI 对话。
+
+> 🌐 完整项目展示、系统架构与实机截图：  
+> **https://hxh25.github.io/hearthstone_coach_windows/**
+
+> 本项目只读取本地日志与卡牌数据，并在游戏外创建 Overlay。  
+> **不会注入 Hearthstone 进程，不会自动点击，不会自动买牌或操作游戏。**
 
 当前仓库对应 **Windows v0.5.0.7**。程序通过本地读取 Hearthstone 日志、HDT/HearthDb/HearthMirror 卡牌与种族数据，结合：
 
